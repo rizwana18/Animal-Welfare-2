@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Keyboard</title>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #f9f9f9, #e6e6e6);
+            scroll-behavior: smooth;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .keyboard {
+            display: grid;
+            grid-template-columns: repeat(14, 1fr);
+            gap: 5px;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 10px;
+            background-color:black;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .key {
+            padding: 10px;
+            text-align: center;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .keyboard-input {
+            font-size: 18px;
+            padding: 10px;
+            margin-top: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        #message-container {
+            margin-top: 20px;
+            max-width: 400px;
+            display: none;
+            width: 100%;
+        }
+
+        .card {
+            background-color:whitesmoke;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 15px;
+            margin-top: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: hotpink;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div class="keyboard" id="virtual-keyboard">
+        <div class="key">1</div>
+        <div class="key">2</div>
+        <div class="key">3</div>
+        <div class="key">4</div>
+        <div class="key">5</div>
+        <div class="key">6</div>
+        <div class="key">7</div>
+        <div class="key">8</div>
+        <div class="key">9</div>
+        <div class="key">0</div>
+        <div class="key">Q</div>
+        <div class="key">W</div>
+        <div class="key">E</div>
+        <div class="key">R</div>
+        <div class="key">T</div>
+        <div class="key">Y</div>
+        <div class="key">U</div>
+        <div class="key">I</div>
+        <div class="key">O</div>
+        <div class="key">P</div>
+        <div class="key">A</div>
+        <div class="key">S</div>
+        <div class="key">D</div>
+        <div class="key">F</div>
+        <div class="key">G</div>
+        <div class="key">H</div>
+        <div class="key">J</div>
+        <div class="key">K</div>
+        <div class="key">L</div>
+        <div class="key">Z</div>
+        <div class="key">X</div>
+        <div class="key">C</div>
+        <div class="key">V</div>
+        <div class="key">B</div>
+        <div class="key">N</div>
+        <div class="key">M</div>
+        <div class="key">Shift</div>
+        <div class="key">?</div>
+        <div class="key">!</div>
+        <div class="key">@</div>
+        <div class="key">#</div>
+        <div class="key">$</div>
+        <div class="key">%</div>
+        <div class="key">&</div>
+        <div class="key">*</div>
+        <div class="key">(</div>
+        <div class="key">)</div>
+        <div class="key">+</div>
+        <div class="key">Space</div>
+        <div class="key">Enter</div>
+        <div class="key">tab</div>
+        <div class="key">ctrl</div>
+        <div class="key">alt</div>
+    </div>
+
+    <input class="keyboard-input" type="text" placeholder="Click here to type using the virtual keyboard" id="inputField">
+    <div id="message-container" class="card"></div>
+
+    <script>
+        const keyboard = document.getElementById('virtual-keyboard');
+        const inputField = document.getElementById('inputField');
+        const messageContainer = document.getElementById('message-container');
+        let shiftPressed = false;
+
+        keyboard.addEventListener('click', (event) => {
+            if (event.target.classList.contains('key')) {
+                const keyValue = event.target.textContent;
+
+                if (keyValue === 'Backspace') {
+                    inputField.value = inputField.value.slice(0, -1);
+                } else if (keyValue === 'Space') {
+                    inputField.value += ' ';
+                } else if (keyValue === 'Enter') {
+                    displayMessage();
+                } else if (keyValue === 'Shift') {
+                    shiftPressed = !shiftPressed;
+                } else {
+                    inputField.value += shiftPressed ? keyValue.toUpperCase() : keyValue.toLowerCase();
+                }
+            }
+        });
+
+        function displayMessage() {
+            const message = inputField.value.trim().toLowerCase();
+            let content = '';
+
+            switch (message) {
+                case 'adopt':
+                    content = {
+                        title: 'Why Adopt?',
+                        description: 'Adopting a pet is a compassionate choice. It provides a loving home for animals in need, giving them a second chance for a happy life.'
+                    };
+                    break;
+                case 'donate':
+                    content = {
+                        title: 'Make a Difference with Your Donation',
+                        description: 'Your donation supports our mission to care for and protect animals. It helps provide food, shelter, and medical care to those in need.'
+                    };
+                    break;
+                case 'volunteer':
+                    content = {
+                        title: 'Volunteer and Change Lives',
+                        description: 'Volunteering is a rewarding experience. Your time and efforts contribute to the well-being of animals, making a positive impact on their lives.'
+                    };
+                    break;
+                case 'love towards animals':
+                    content = {
+                        title: 'Expressing Love Towards Animals',
+                        description: 'Animals bring joy and companionship. Show your love by treating them with kindness, providing care, and promoting their well-being.'
+                    };
+                    break;
+                case 'animal care':
+                    content = {
+                        title: 'Essentials of Animal Care',
+                        description: 'Proper care includes nutrition, regular veterinary check-ups, and a safe environment. Ensure animals receive the care they deserve for a happy, healthy life.'
+                    };
+                    break;
+                case 'rescue':
+                    content = {
+                        title: 'Join the Rescue Mission',
+                        description: 'Rescue efforts save animals from harm and dangerous situations. Be part of the rescue mission, offering hope and a chance for a better life.'
+                    };
+                    break;
+                case 'stop eating animals':
+                    content = {
+                        title: 'Choosing a Plant-Based Lifestyle',
+                        description: 'Adopting a plant-based diet reduces harm to animals and promotes a sustainable lifestyle. Make a positive impact by choosing cruelty-free food options.'
+                    };
+                    break;
+                case 'save animals':
+                    content = {
+                        title: 'Be a Hero, Save Lives',
+                        description: 'Every action counts. Contribute to saving animals by supporting rescue initiatives, promoting awareness, and making ethical choices.'
+                    };
+                    break;
+                default:
+                    content = {
+                        title: 'Keyword Not Found',
+                        description: 'Sorry, the content for the entered keyword is not available. Try another keyword!'
+                    };
+                    break;
+            }
+
+            // Display content in card format
+            messageContainer.innerHTML = `
+                <div class="card">
+                    <h3>${content.title}</h3>
+                    <p>${content.description}</p>
+                </div>
+            `;
+            // Make the card visible
+    messageContainer.style.display = 'block';
+
+    // Clear input field after displaying the message
+    inputField.value = '';
+            // Set timeout to remove the card after 6 seconds
+            setTimeout(() => {
+                messageContainer.innerHTML = ''; // Clear the content
+            }, 6000);
+
+            inputField.value = '';
+        }
+    </script>
+</body>
+
+</html>
+

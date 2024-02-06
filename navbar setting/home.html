@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="landing.css">
+    <link rel="stylesheet" type="text/css" href="home.css">
+    
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #f9f9f9, #dc6cf5);
+            scroll-behavior: smooth;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 175vh;
+            margin-bottom: 50px;
+        }
+
+/* navbar styling */
+nav{
+  position: fixed;
+  width: 100%;
+  padding: 20px 0;
+  z-index: 998;
+  transition:  0.3s ease;
+  font-family: 'Ubuntu', sans-serif;
+}
+nav.sticky{
+  background: #4070f4;
+  padding: 13px 0;
+}
+nav .navbar{
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+}
+nav .navbar .logo a{
+  font-weight: 500;
+  font-size: 35px;
+  color: #4070f4;
+}
+nav.sticky .navbar .logo a{
+  color: #fff;
+}
+nav .navbar .menu{
+  display: flex;
+  position: relative;
+}
+nav .navbar .menu li{
+  list-style: none;
+  margin: 0 8px;
+}
+.navbar .menu a{
+  font-size: 18px;
+  font-weight: 500;
+  color: #e4ecf0;
+  padding: 6px 0;
+  transition: all 0.4s ease;
+}
+.navbar .menu a:hover{
+  color: #4070f4;
+}
+nav.sticky .menu a{
+  color: #FFF;
+}
+nav.sticky .menu a:hover{
+  color: #0E2431;
+}
+.navbar .media-icons a{
+  color: #4070f4;
+  font-size: 18px;
+  margin: 0 6px;
+}
+nav.sticky .media-icons a{
+  color: #FFF;
+}
+
+/* Side Navigation Menu Button CSS */
+nav .menu-btn,
+.navbar .menu .cancel-btn{
+  position: absolute;
+  color: #fff;
+  right: 30px;
+  top: 20px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: none;
+}
+nav .menu-btn{
+  color: #4070f4;
+}
+nav.sticky .menu-btn{
+  color: #FFF;
+}
+.navbar .menu .menu-btn{
+  color: #fff;
+}
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            animation: slideUp 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50px);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        .keyboard {
+            display: grid;
+            grid-template-columns: repeat(14, 1fr);
+            gap: 5px;
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color:black;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        
+        .board {
+            color: #FF7F50;
+            font-size: 40px;
+            font-family: 'Arial', sans-serif;
+            margin-top: 90px;
+            margin-bottom: 20px;
+        }
+        
+        p {
+            color:#6b5b95;
+            font-size: 25px;
+            margin-top: 10px;
+            margin-bottom: 30px;
+            margin-left: 25px;
+        }
+        
+        .key {
+            padding: 10px;
+            text-align: center;
+            background-color:aliceblue;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        
+        .keyboard-input {
+            font-size: 18px;
+            padding: 10px;
+            margin-top: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        #message-container {
+            margin-top: 30px;
+            max-width: 400px;
+            display: none;
+            width: 100%;
+        }
+
+        .card {
+            background-color:rgb(249, 246, 246);
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 15px;
+            margin-top: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h3 {
+            color: #fbc8c8;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: rgb(234, 6, 120);
+            font-size: 20px;
+            line-height: 1.5;
+            margin-top: 20px;
+        }
+    </style>
+    <title>Home</title>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="blog-section">
+            <h2>our mission</h2>
+            <p>our mission is to provide home to all the pets providing them all the love they deserve by adoptiong,rescuing and loving them</p>
+        </div>
+
+        <div class="cards">
+            <div class="card">
+                <div class="image-selection">
+                    <img src="https://media.4-paws.org/b/c/1/2/bc12a9185c9561fd23ee51a6c1588debe6c43394/VIER%20PFOTEN_2020-04-23_099-4032x2110-1200x628.jpg" alt="Rescue Image" width="250" height="300">
+                </div>
+                <div class="content">
+                    <h4>Rescue</h4>
+                    <p>every day, countless animals face challenging situations and need our help to overcome adversity. 
+                        Our dedicated rescue team works tirelessly to save and rehabilitate animals in need.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="image-selection">
+                    <img src="https://i.ytimg.com/vi/t5Yv0HRrl9Y/maxresdefault.jpg" alt="Adopt Image" width="200" height="300">
+                </div>
+                <div class="content">
+                    <h2>Adopt</h2>
+                    <p>Are you ready to make a furry friend a part of your family? 
+                        Choosing to adopt a pet is a rewarding experience that not only brings joy 
+                        to your life but also provides a loving home for an animal in need.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="image-selection">
+                    <img src="https://images.indianexpress.com/2023/11/Dogs-rescues-cat-from-a-100ft-corn-metal-shaft.jpg" alt="Love Image" width="200" height="300">
+                </div>
+                <div class="content">
+                    <h2>Love</h2>
+                    <p>We believe in giving every creature a second chance at a happy and healthy life. 
+                        Through our rescue efforts, we've been able to provide shelter, medical care, and love 
+                        to animals facing difficult circumstances. Join us in our mission to make a difference 
+                        and be a part of saving lives.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="container">Virtual KeyBoard</div>
+    <a href="virtualk.html">Get Information By Typing Here </a>
+    <div class="container">Play Puzzle</div>
+    <a href="puzzle.html">Play Intercative Puzzle</a>
+</body>
+</html>
+

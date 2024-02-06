@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700,300">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.1.2/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400&family=Finger+Paint&display=swap">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #b98bed5e;
+            overflow-x: hidden;
+        }
+
+        #chat-container {
+            max-width: 400px;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        #message-section {
+            max-height: 300px;
+            overflow-y: auto;
+            padding: 10px;
+            background-color: #fff;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        /* navbar styling */
+nav{
+  position: fixed;
+  width: 100%;
+  padding: 20px 0;
+  z-index: 998;
+  transition:  0.3s ease;
+  font-family: 'Ubuntu', sans-serif;
+}
+nav.sticky{
+  background: #4070f4;
+  padding: 13px 0;
+}
+nav .navbar{
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+}
+nav .navbar .logo a{
+  font-weight: 500;
+  font-size: 35px;
+  color: #4070f4;
+}
+nav.sticky .navbar .logo a{
+  color: #fff;
+}
+nav .navbar .menu{
+  display: flex;
+  position: relative;
+}
+nav .navbar .menu li{
+  list-style: none;
+  margin: 0 8px;
+}
+.navbar .menu a{
+  font-size: 18px;
+  font-weight: 500;
+  color: #0E2431;
+  padding: 6px 0;
+  transition: all 0.4s ease;
+}
+.navbar .menu a:hover{
+  color: #4070f4;
+}
+nav.sticky .menu a{
+  color: #FFF;
+}
+nav.sticky .menu a:hover{
+  color: #0E2431;
+}
+.navbar .media-icons a{
+  color: #4070f4;
+  font-size: 18px;
+  margin: 0 6px;
+}
+nav.sticky .media-icons a{
+  color: #FFF;
+}
+
+/* Side Navigation Menu Button CSS */
+nav .menu-btn,
+.navbar .menu .cancel-btn{
+  position: absolute;
+  color: #fff;
+  right: 30px;
+  top: 20px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: none;
+}
+nav .menu-btn{
+  color: #4070f4;
+}
+nav.sticky .menu-btn{
+  color: #FFF;
+}
+.navbar .menu .menu-btn{
+  color: #fff;
+}
+
+        .message {
+            margin: 10px;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        #user {
+            background-color: #4caf50;
+            color: #fff;
+            text-align: right;
+            animation: slideInRight 0.5s ease-in-out;
+        }
+
+        #bot {
+            background-color: #e0e0e0;
+            animation: slideInLeft 0.5s ease-in-out;
+        }
+
+        #input {
+            width: calc(100% - 20px);
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        #input:focus {
+            transform: scale(1.05);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-100%);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<body>
+  <nav>
+    <div class="navbar">
+      
+      <ul class="menu">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="puzzle.html">Puzzle</a></li>
+        <li><a href="petcare.html">Pet Care </a></li>
+        <li><a href="donation.html">Donation</a></li>
+        <li><a href="qrcode.html">Qr-Collar Tag</a></li>
+        <li><a href="chatbot.html">Veteran Care</a></li>
+
+        <div class="cancel-btn">
+          <i class="fas fa-times"></i>
+        </div>
+      </ul>
+      
+      <div class="media-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="menu-btn">
+      <i class="fas fa-bars"></i>
+    </div
+    <div class="card">
+        <div id="header">
+            <h1>Veteran Guide</h1>
+        </div>
+        <div id="message-section">
+            <div class="message" id="bot"><span id="bot-response">Hello.. I'm listening! Go on..</span></div>
+        </div>
+        <div id="input-section">
+            <input id="input" type="text" placeholder="Type a message" autocomplete="off" autofocus="autofocus"/>
+            <button class="send" onclick="sendMessage()">
+                <div class="circle"><i class="zmdi zmdi-mail-send"></i></div>
+            </button>
+        </div>
+    </div>
+    
+    
+
+    <script>
+        // Your JavaScript code here
+        const userMessage = [ 
+        ["tell me about animal welfare"], ["what is animal cruelty"], ["how can I help animals"], ["what are animal rights"],
+    ["hi", "hey", "hello"],
+    ["sure", "yes", "no"],
+    ["are you genious", "are you nerd", "are you intelligent"],
+    ["i hate you", "i dont like you"],
+    ["how are you", "how is life", "how are things", "how are you doing"],
+    ["how is corona", "how is covid 19", "how is covid19 situation"],
+    ["what are you doing", "what is going on", "what is up"],
+    ["how old are you"],
+    ["who are you", "are you human", "are you bot", "are you human or bot"],
+    ["who created you", "who made you", "who is your creator"],
+  
+    [
+      "your name please",
+      "your name",
+      "may i know your name",
+      "what is your name",
+      "what call yourself"
+    ],
+    ["i love you"],
+    ["happy", "good", "fun", "wonderful", "fantastic", "cool", "very good"],
+    ["bad", "bored", "tired"],
+    ["help me", "tell me story", "tell me joke"],
+    ["ah", "ok", "okay", "nice", "welcome"],
+    ["thanks", "thank you"],
+    ["what should i eat today"],
+    ["bro"],
+    ["what", "why", "how", "where", "when"],
+    ["corona", "covid19", "coronavirus"],
+    ["you are funny"],
+    ["i dont know"],
+    ["boring"],
+    ["im tired"] ,
+    []
+    
+  ];
+  const botReply = [
+  ["Animal welfare refers to the way we treat animals and ensure their well-being."], ["Animal cruelty is any behavior that causes harm, distress, or suffering to an animal."], ["You can help animals by volunteering at a local shelter, adopting a pet, donating to animal charities, and reporting any instances of animal cruelty."], ["Animal rights refer to the moral and legal entitlements of animals to live free from human use and exploitation."]
+    ["Hello!", "Hi!", "Hey!", "Hi there!"],
+    ["Okay"],
+    ["Yes I am! "],
+    ["I'm sorry about that. But I like you dude."],
+    [
+      "Fine... how are you?",
+      "Pretty well, how are you?",
+      "Fantastic, how are you?"
+    ],
+    ["Getting better. There?", "Somewhat okay!", "Yeah fine. Better stay home!"],
+  
+    [
+      "Nothing much",
+      "About to go to sleep",
+      "Can you guess?",
+      "I don't know actually"
+    ],
+    ["I am always young."],
+    ["I am just a bot", "I am a bot. What are you?"],
+    ["Sabitha Kuppusamy"],
+    ["I am nameless", "I don't have a name"],
+    ["I love you too", "Me too"],
+    ["Have you ever felt bad?", "Glad to hear it"],
+    ["Why?", "Why? You shouldn't!", "Try watching TV", "Chat with me."],
+    ["What about?", "Once upon a time..."],
+    ["Tell me a story", "Tell me a joke", "Tell me about yourself"],
+    ["You're welcome"],
+    ["Briyani", "Burger", "Sushi", "Pizza"],
+    ["Dude!"],
+    ["Yes?"],
+    ["Please stay home"],
+    ["Glad to hear it"],
+    ["Say something interesting"],
+    ["Sorry for that. Let's chat!"],
+    ["Take some rest, Dude!"]
+  ];
+  
+  const alternative = [
+    "Same here, dude.",
+    "That's cool! Go on...",
+    "Dude...",
+    "Ask something else...",
+    "Hey, I'm listening..."
+  ];
+  
+  const synth = window.speechSynthesis;
+  
+  function voiceControl(string) {
+    let u = new SpeechSynthesisUtterance(string);
+    u.text = string;
+    u.lang = "en-aus";
+    u.volume = 1;
+    u.rate = 1;
+    u.pitch = 1;
+    synth.speak(u);
+  }
+  
+  function sendMessage() {
+    const inputField = document.getElementById("input");
+    let input = inputField.value.trim();
+    input != "" && output(input);
+    inputField.value = "";
+  }
+  document.addEventListener("DOMContentLoaded", () => {
+    const inputField = document.getElementById("input");
+    inputField.addEventListener("keydown", function (e) {
+      if (e.code === "Enter") {
+        let input = inputField.value.trim();
+        input != "" && output(input);
+        inputField.value = "";
+      }
+    });
+  });
+  
+  function output(input) {
+    let product;
+  
+    let text = input.toLowerCase().replace(/[^\w\s\d]/gi, "");
+  
+    text = text
+      .replace(/[\W_]/g, " ")
+      .replace(/ a /g, " ")
+      .replace(/i feel /g, "")
+      .replace(/whats/g, "what is")
+      .replace(/please /g, "")
+      .replace(/ please/g, "")
+      .trim();
+  
+    let comparedText = compare(userMessage, botReply, text);
+  
+    product = comparedText
+      ? comparedText
+      : alternative[Math.floor(Math.random() * alternative.length)];
+    addChat(input, product);
+  }
+  
+  function compare(triggerArray, replyArray, string) {
+    let item;
+    for (let x = 0; x < triggerArray.length; x++) {
+      for (let y = 0; y < replyArray.length; y++) {
+        if (triggerArray[x][y] == string) {
+          items = replyArray[x];
+          item = items[Math.floor(Math.random() * items.length)];
+        }
+      }
+    }
+    //containMessageCheck(string);
+    if (item) return item;
+    else return containMessageCheck(string);
+  }
+  
+  function containMessageCheck(string) {
+    let expectedReply = [
+      [
+        "Good Bye, dude",
+        "Bye, See you!",
+        "Dude, Bye. Take care of your health in this situation."
+      ],
+      ["Good Night, dude", "Have a sound sleep", "Sweet dreams"],
+      ["Have a pleasant evening!", "Good evening too", "Evening!"],
+      ["Good morning, Have a great day!", "Morning, dude!"],
+      ["Good Afternoon", "Noon, dude!", "Afternoon, dude!"]
+    ];
+    let expectedMessage = [
+      ["bye", "tc", "take care"],
+      ["night", "good night"],
+      ["evening", "good evening"],
+      ["morning", "good morning"],
+      ["noon"]
+    ];
+    let item;
+    for (let x = 0; x < expectedMessage.length; x++) {
+      if (expectedMessage[x].includes(string)) {
+        items = expectedReply[x];
+        item = items[Math.floor(Math.random() * items.length)];
+      }
+    }
+    return item;
+  }
+  function addChat(input, product) {
+    const mainDiv = document.getElementById("message-section");
+    let userDiv = document.createElement("div");
+    userDiv.id = "user";
+    userDiv.classList.add("message");
+    userDiv.innerHTML = `<span id="user-response">${input}</span>`;
+    mainDiv.appendChild(userDiv);
+  
+    let botDiv = document.createElement("div");
+    botDiv.id = "bot";
+    botDiv.classList.add("message");
+    botDiv.innerHTML = `<span id="bot-response">${product}</span>`;
+    mainDiv.appendChild(botDiv);
+    var scroll = document.getElementById("message-section");
+    scroll.scrollTop = scroll.scrollHeight;
+    voiceControl(product);
+  }
+    </script>
+  
+</body>
+</html>

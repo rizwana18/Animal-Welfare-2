@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>QR Code Generator</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css'>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,700&amp;family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&amp;display=swap'>"
+  <link rel="stylesheet" type="text/css" href="qrcode.css">
+  <header>
+    <!-- Include the navbar here -->
+    <div id="navbar"></div>
+  </header>
+  <style>
+    .user-input-section{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 50px;
+    }
+
+    .heading{
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .title{
+      font-size: 3rem;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .sub-title{
+      font-size: 1.5rem;
+      font-weight: lighter;
+      color: #666;
+    }
+
+    .user-input{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 50px;
+    }
+
+    input[type="text"]{
+      width: 300px;
+      height: 40px;
+      font-size: 1.2rem;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-right: 20px;
+    }
+
+    button{
+      width: 100px;
+      height: 40px;
+      font-size: 1.2rem;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .qr-code-container{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 300px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .qr-code{
+      width: 200px;
+      height: 200px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    #downloadBtn {
+      width: 150px;
+      height: 40px;
+      font-size: 1.2rem;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-left: 20px;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="user-input-section">
+    <section class="heading">
+      <div class="title">QRcodes</div>
+      <div class="sub-title">Generate QRCode for anything!</div>
+    </section>
+    <section class="user-input">
+      <input type="text" placeholder="Type something..." name="input_text" id="input_text" autocomplete="off">
+      <button class="button" type="submit" onclick="generateQRCode()">Generate<i class="fa-solid fa-rotate"></i></button>
+    </section>
+  </div>
+  <div class="qr-code-container">
+    <div class="qr-code" id="qrCode"></div>
+    <button id="downloadBtn">Download QR Code</button>
+  </div>
+
+  <script>
+    function generateQRCode() {
+      const inputText = document.getElementById("input_text").value;
+      const qrCode = new QRCode(document.getElementById("qrCode"), {
+        text: inputText,
+        width: 200,
+        height: 200,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
+      });
+
+      // Create a download link for the QR code image
+      const qrCodeImage = document.getElementById("qrCode").querySelector("img");
+      const downloadLink = document.createElement("a");
+      downloadLink.href = qrCodeImage.src;
+      downloadLink.download = "qrcode.png";
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
+    }
+  </script>
+  <script src="qrcode.js"></script>
+  <script>
+    // Load the navbar using fetch
+    fetch("navbar.html")
+      .then((response) => response.text())
+      .then((html) => {
+        // Insert the navbar into the header
+        document.getElementById("navbar").innerHTML = html;
+      });
+  </script>
+</body>
+</html>
+
+
+
+
+
