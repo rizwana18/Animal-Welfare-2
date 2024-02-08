@@ -1,0 +1,87 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+#navbar {
+    text-align: center;
+}
+
+#main-page-link {
+    text-decoration: none;
+    color: #e1e2e8;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+#main-page-link:hover {
+    color: #10161c;
+}
+
+.container {
+    width: 85%;
+    margin: auto;
+}
+
+.blog-section {
+    width: 100%;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.blog-section h2 {
+    font-size: 40px;
+    color: #357ca6;
+    text-transform: uppercase;
+    margin-top: 20px;
+}
+
+.blog-section p {
+    font-size: 18px;
+    color: #7e7e7e;
+    margin-top: 20px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 50px;
+    margin: 25px 0;
+}
+
+.cards .card {
+    width: 100%;
+    position: relative;
+    border: 2px solid #357ca6;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(229, 77, 77, 0.1);
+    transition: transform 0.3s;
+}
+
+.cards .card:hover {
+    transform: scale(1.05);
+}
+
+.content h4 {
+    font-size: 24px;
+    color: #0f0f0f;
+    font-weight: 400;
+}
+
+.content p {
+    color: #7e7e7e;
+    font-size: 18px;
+}
+
+.card img {
+    object-fit: cover;
+    width: 100%; /* Change this value to 100% */
+    margin-top: 0;
+}

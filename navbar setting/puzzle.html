@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Slide Puzzle</title>
+        <link rel="stylesheet" href="puzzle.css">
+        <script src="puzzle.js"></script>
+        <style>
+          #title {
+  width: 100px; /* Adjust the width as needed */
+  height: auto;
+  display: block;
+  border-radius: 50%; /* Makes the image round */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
+  transition: transform 0.3s ease; /* Adds a smooth transition effect */
+}
+
+#title:hover {
+  transform: scale(1.1); /* Scales up the image on hover */
+}
+
+        </style>
+    </head>
+
+    <body>
+      <header>
+        <div id="navbar">
+           <a href="landing.html" id="main-page-link">Go Back To Main Page</a>
+        </div>
+      </header>
+        <img id="title" src="./puzzle.jpg">
+        <div id="board">
+        </div>
+        <h1>Turns: <span id="turns">0</span></h1>
+        <footer>2024 @ Copyright</footer>
+    </body>
+</html>

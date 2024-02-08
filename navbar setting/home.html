@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="landing.css">
+    <link rel="stylesheet" type="text/css" href="home.css">
+    
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #f9f9f9, #da98e9);
+            scroll-behavior: smooth;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 175vh;
+            margin-bottom: 50px;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50px);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+        
+        p {
+            color:#6b5b95;
+            font-size: 25px;
+            margin-top: 10px;
+            margin-bottom: 30px;
+            margin-left: 25px;
+        }
+        
+        .key {
+            padding: 10px;
+            text-align: center;
+            background-color:aliceblue;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        
+        .keyboard-input {
+            font-size: 18px;
+            padding: 10px;
+            margin-top: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        #message-container {
+            margin-top: 30px;
+            max-width: 400px;
+            display: none;
+            width: 100%;
+        }
+
+        .card {
+            background-color:rgb(249, 246, 246);
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 15px;
+            margin-top: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h3 {
+            color: #fbc8c8;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: rgb(234, 6, 120);
+            font-size: 20px;
+            line-height: 1.5;
+            margin-top: 20px;
+        }
+
+        a {
+            display: block;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            width: 250px;
+            height: 50px;
+            line-height: 50px;
+            margin: 20px auto;
+            background-color: #a69ee3;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease 0s;
+        }
+
+        a:hover {
+            background-color: #7e66f7;
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        }
+    </style>
+    <title>Home</title>
+</head>
+<body>
+  <header>
+    <div id="navbar">
+       <a href="landing.html" id="main-page-link">Go Back To Main Page</a>
+    </div>
+  </header>
+    
+    <div class="container">
+        <div class="blog-section">
+            <h2>our mission</h2>
+            <p>Our mission is to provide home to all the pets providing them all the love they deserve by adoptiong,rescuing and loving them</p>
+        </div>
+
+        <div class="cards">
+            <div class="card">
+                <div class="image-selection">
+                    <img src="https://media.4-paws.org/b/c/1/2/bc12a9185c9561fd23ee51a6c1588debe6c43394/VIER%20PFOTEN_2020-04-23_099-4032x2110-1200x628.jpg" alt="Rescue Image" width="250" height="300">
+                </div>
+                <div class="content">
+                    <h4>Rescue</h4>
+                    <p>every day, countless animals face challenging situations and need our help to overcome adversity. 
+                        Our dedicated rescue team works tirelessly to save and rehabilitate animals in need.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="image-selection">
+                    <img src="https://i.ytimg.com/vi/t5Yv0HRrl9Y/maxresdefault.jpg" alt="Adopt Image" width="200" height="300">
+                </div>
+                <div class="content">
+                    <h2>Adopt</h2>
+                    <p>Are you ready to make a furry friend a part of your family? 
+                        Choosing to adopt a pet is a rewarding experience that not only brings joy 
+                        to your life but also provides a loving home for an animal in need.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="image-selection">
+                    <img src="https://images.indianexpress.com/2023/11/Dogs-rescues-cat-from-a-100ft-corn-metal-shaft.jpg" alt="Love Image" width="200" height="300">
+                </div>
+                <div class="content">
+                    <h2>Love</h2>
+                    <p>We believe in giving every creature a second chance at a happy and healthy life. 
+                        Through our rescue efforts, we've been able to provide shelter, medical care, and love 
+                        to animals facing difficult circumstances. Join us in our mission to make a difference 
+                        and be a part of saving lives.</p>
+                </div>
+            </div>
+        </div>
+        <div class="container1">Virtual KeyBoard</div>
+    <a href="virtualk.html">Get Information By Typing </a>
+    <div class="container1">Play Puzzle</div>
+    <a href="puzzle.html">Play Intercative Puzzle</a>
+    </div>
+    <footer>2024 @ CopyRight</footer>
+</html>
+
