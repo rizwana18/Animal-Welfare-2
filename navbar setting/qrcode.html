@@ -1,0 +1,57 @@
+<!DOCTYPE html
+<html><head>
+ <title>QR Code Generator</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css'>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,700&amp;family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&amp;display=swap'>"
+  <link rel="stylesheet" href="qrcode.css">
+</head>
+<body>
+  <header>
+    <div id="navbar">
+       <a href="landing.html" id="main-page-link">Go Back To Main Page</a>
+    </div>
+  </header>
+  <div class="user-input-section">
+    <section class="heading">
+      <div class="title">QR TAG COLLAR</div>
+      <div class="sub-title">Stay connected with your furry friend using our QR collar tag, ensuring their safety while enabling easy access to vital information.</div>
+    </section>
+    <section class="user-input">
+      <input type="text" placeholder="Type something..." name="input_text" id="input_text" autocomplete="off">
+      <button class="button" type="submit" onclick="generateQRCode()">Generate<i class="fa-solid fa-rotate"></i></button>
+    </section>
+  </div>
+  <div class="qr-code-container">
+    <div class="qr-code" id="qrCode"></div>
+    <button id="downloadBtn">Download QR Code</button>
+  </div>
+  <div class="video-container">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/iuR9kc8N0qY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+
+  <script src="qrcode.js"></script>
+  <script>
+    function generateQRCode() {
+      const inputText = document.getElementById("input_text").value;
+      const qrCode = new QRCode(document.getElementById("qrCode"), {
+        text: inputText,
+        width: 200,
+        height: 200,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
+      });
+
+      // Create a download link for the QR code image
+      const qrCodeImage = document.getElementById("qrCode").querySelector("img");
+      const downloadLink = document.createElement("a");
+      downloadLink.href = qrCodeImage.src;
+      downloadLink.download = "qrcode.png";
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
+    }
+  </script>
+</body>
+</html>

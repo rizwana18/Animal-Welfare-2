@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible"
+          content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+          <link href='form.css' rel='stylesheet'>
+
+    <script src=
+"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+    </script>
+</head>
+<body>
+    <title>
+        Build a Survey Form using HTML and CSS
+    </title>
+ <h1>Animal Adoption Details</h1>
+ 
+<!-- Create Form -->
+<form id="form">
+
+    <!-- Details -->
+    <div class="form-control">
+        <label for="name" id="label-name">
+            Adopter Name
+        </label>
+
+        <!-- Input Type Text -->
+        <input type="text" id="name"
+               placeholder="Enter your name" />
+    </div>
+
+    <div class="form-control">
+        <label for="address" id="label-address">
+            Adopter Address
+        </label>
+
+        <!-- Input Type Email-->
+        <input type="text" id="address"
+               placeholder="Enter your address" />
+    </div>
+
+    <div class="form-control">
+        <label for="breed" id="label-breed">
+            Breed
+        </label>
+
+        <!-- Input Type Text -->
+        <input type="text" id="breed"
+               placeholder="Breed Name" />
+    </div>
+    <div class="form-control">
+        <label for="contact number" id="label-contact number">
+            Contact Number
+        </label>
+
+        <!-- Input Type Text -->
+        <input type="number" id="cn"
+               placeholder="Enter your contact number" />
+    </div>
+
+    <div class="form-control">
+        <label for="role" id="label-role">
+            Age of Animal
+        </label>
+
+        <!-- Dropdown options -->
+        <select name="role" id="role">
+            <option disabled selected value>
+                Age
+              </option>
+              <option value="1">
+                  0 to 5month
+              </option>
+              <option value="2">
+                  6 to12month
+              </option>
+              <option value="3">
+                  13 to 24month
+              </option>
+              <option value="4">
+                  4 to 6year
+              </option>
+              <option value="5">
+                  7 to 9year
+              </option>
+              <option value="6">
+                  10 to above
+              </option>
+            </select>
+    </div>
+    <div class="form-control">
+        <label> Types of Animal
+        </label>
+        <!-- Input Type Checkbox -->
+        <label for="inp-1">
+            <input type="checkbox" name="inp">Dog
+              </input>
+          </label>
+        <label for="inp-2">
+            <input type="checkbox" name="inp">Cat
+              </input>
+        </label>
+    </div>
+
+    <div class="form-control">
+        <label for="comment">
+            Any comments or suggestions
+        </label>
+
+        <!-- multi-line text input control -->
+        <textarea name="comment" id="comment"
+                  placeholder="Enter your comment here">
+        </textarea>
+    </div>
+
+    <!-- Multi-line Text Input Control -->
+    <button type="submit" value="submit">
+        Submit
+    </button>
+</form>
+</body>
+</html>
